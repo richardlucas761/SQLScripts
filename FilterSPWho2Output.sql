@@ -18,3 +18,4 @@ INSERT INTO @Table EXEC sp_who2
 
 SELECT  *
 FROM    @Table
+WHERE SPID > 50 /* SPID 1 to 50 are reserved for system processes */
