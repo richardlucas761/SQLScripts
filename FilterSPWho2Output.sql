@@ -1,3 +1,5 @@
+/* SPID 1 to 50 are reserved for system processes */
+
 DECLARE @Table TABLE(
         SPID INT,
         Status VARCHAR(MAX),
@@ -16,6 +18,12 @@ DECLARE @Table TABLE(
 
 INSERT INTO @Table EXEC sp_who2
 
-SELECT  *
+SELECT  * 
 FROM    @Table
-WHERE SPID > 50 /* SPID 1 to 50 are reserved for system processes */
+WHERE SPID > 50 
+ORDER BY CPUTime desc
+
+SELECT  * 
+FROM    @Table
+WHERE SPID > 50 
+ORDER BY DiskIO desc
